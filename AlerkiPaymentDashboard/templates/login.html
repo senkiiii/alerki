@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Login</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #0f111a;
+      color: #f8f8f2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .container {
+      background-color: #242734;
+      padding: 2.5rem 3.5rem;
+      border-radius: 16px;
+      box-shadow: 0 0 30px rgba(0,0,0,0.75);
+      width: 380px;
+      text-align: center;
+    }
+    h1 {
+      margin-bottom: 1.5rem;
+      font-weight: 700;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.3rem;
+      text-align: left;
+    }
+    label {
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+    }
+    input[type="text"] {
+      padding: 0.6rem 0.8rem;
+      font-size: 1rem;
+      border-radius: 8px;
+      border: none;
+      background-color: #3c3f58;
+      color: #f8f8f2;
+      outline: none;
+      transition: background 0.3s ease;
+    }
+    input[type="text"]:focus {
+      background-color: #505376;
+    }
+    button {
+      padding: 0.8rem;
+      font-weight: 700;
+      background-color: #6272a4;
+      border: none;
+      border-radius: 10px;
+      color: #f8f8f2;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: #4a5991;
+    }
+    .signup-link {
+      margin-top: 1.4rem;
+      text-align: center;
+      font-size: 0.95rem;
+    }
+    .signup-link a {
+      color: #8be9fd;
+      text-decoration: none;
+    }
+    .signup-link a:hover {
+      text-decoration: underline;
+    }
+    .flash {
+      margin-top: 1rem;
+      color: #ff5555;
+      font-weight: 700;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Login</h1>
+    <form method="POST" action="{{ url_for('login') }}">
+      <label for="username">Username</label>
+      <input id="username" name="username" type="text" placeholder="Enter username" required />
+      <button type="submit">Log In</button>
+    </form>
+    <div class="signup-link">
+      Don't have an account? <a href="{{ url_for('signup') }}">Sign up here</a>
+    </div>
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <div class="flash">
+          {% for m in messages %}
+            <div>{{ m }}</div>
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
+  </div>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title> ALERKI </title>
+<style>
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #eef2f7;
+    margin: 0; padding: 0;
+    display: flex; justify-content: center; align-items: center;
+    height: 100vh;
+  }
+  .container {
+    background: white;
+    padding: 30px 40px;
+    border-radius: 12px;
+    box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+    width: 320px;
+    text-align: center;
+  }
+  h1 {
+    margin-bottom: 25px;
+    color: #33475b;
+  }
+  select {
+    width: 100%;
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid #b0bec5;
+    font-size: 16px;
+  }
+  button {
+    margin-top: 25px;
+    width: 100%;
+    padding: 12px;
+    background-color: #1976d2;
+    color: white;
+    font-size: 18px;
+    border:none;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  button:hover {
+    background-color: #1565c0;
+  }
+  .flash {
+    color: #d32f2f;
+    margin-top: 15px;
+    font-weight: 600;
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <h1> WELCOME TO ALERKI </h1>
+    <form method="POST">
+      <select name="user_type" required>
+        <option value="">Select User Type</option>
+        <option value="new">New User</option>
+        <option value="existing">Existing User</option>
+      </select>
+      <button type="submit">Continue</button>
+    </form>
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <div class="flash">
+          {% for msg in messages %}
+            <div>{{ msg }}</div>
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
+  </div>
+</body>
+</html>
